@@ -1,5 +1,5 @@
 #pragma once
-
+#include <vector>
 #include <stdexcept>
 
 namespace MathLib
@@ -37,7 +37,7 @@ namespace MathLib
     }
     
     // Function for comparing two floating point values
-	bool isEqual(double a, double b, double tolerance = 0.000000001);
+    bool isEqual(double a, double b, double tolerance = 0.000000001);
 
     // Square root function
     template <typename T>
@@ -65,8 +65,11 @@ namespace MathLib
     bool isPrime(int n);
 
     // Function to search least common multiple
-	int leastCommonMultiple(int a, int b);
+    int leastCommonMultiple(int a, int b);
 
     // Function to search GCD
     int GCD(int a, int b);
+
+    
+    std::vector<double> solveQuadraticEquation(double a, double b, double c);
 }
