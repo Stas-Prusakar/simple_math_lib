@@ -9,12 +9,12 @@ protected:
 
     void SetUp() override
     {
-		// Do some job before test run
+        // Do some job before test run
     }
 
     void TearDown() override
     {
-		// Do some job after test run
+        // Do some job after test run
     }
 };
 
@@ -62,7 +62,7 @@ TEST_F(MathLibTestFixture, LeastCommonMultiple)
     EXPECT_EQ(MathLib::leastCommonMultiple(4, 6), 12);
     EXPECT_EQ(MathLib::leastCommonMultiple(7, 5), 35);
     EXPECT_EQ(MathLib::leastCommonMultiple(10, 5), 10);
-    EXPECT_NE(MathLib::leastCommonMultiple(4,6), 3);
+    EXPECT_NE(MathLib::leastCommonMultiple(4, 6), 3);
 }
 
 TEST_F(MathLibTestFixture, IsPrimeTest)
@@ -76,4 +76,26 @@ TEST_F(MathLibTestFixture, IsPrimeTest)
 TEST_F(MathLibTestFixture, GreatestCommonDivider)
 {
     EXPECT_EQ(MathLib::GCD(10, 6), 2);
+}
+
+// ✅ Нові тести для solveQuadraticEquation
+TEST_F(MathLibTestFixture, SolveQuadraticEquation_TwoRoots)
+{
+    auto roots = MathLib::solveQuadraticEquation(1, -3, 2); // x^2 - 3x + 2 = 0
+    ASSERT_EQ(roots.size(), 2);
+    EXPECT_NEAR(roots[0], 2.0, 1e-6);
+    EXPECT_NEAR(roots[1], 1.0, 1e-6);
+}
+
+TEST_F(MathLibTestFixture, SolveQuadraticEquation_OneRoot)
+{
+    auto roots = MathLib::solveQuadraticEquation(1, -2, 1); // x^2 - 2x + 1 = 0
+    ASSERT_EQ(roots.size(), 1);
+    EXPECT_NEAR(roots[0], 1.0, 1e-6);
+}
+
+TEST_F(MathLibTestFixture, SolveQuadraticEquation_NoRoots)
+{
+    auto roots = MathLib::solveQuadraticEquation(1, 0, 1); // x^2 + 1 = 0
+    ASSERT_EQ(roots.size(), 0);
 }
